@@ -5,8 +5,9 @@
 replicaCount: 1
 
 image:
-  repository: nginx
+  repository: ghcr.io/rust42/demokotlin-deployment:main
   pullPolicy: IfNotPresent
+  containerPort: 8080
   # Overrides the image tag whose default is the chart appVersion.
   tag: ""
 
@@ -55,6 +56,10 @@ ingress:
   #  - secretName: chart-example-tls
   #    hosts:
   #      - chart-example.local
+
+mysql:
+  auth:
+    rootPassword: passwords3cr3t
 
 resources: {}
   # We usually recommend not to specify default resources and to leave this as a conscious
