@@ -8,8 +8,13 @@ image:
   repository: ghcr.io/rust42/demokotlin-deployment:main
   pullPolicy: IfNotPresent
   containerPort: 8080
+
   # Overrides the image tag whose default is the chart appVersion.
   tag: ""
+
+env:
+  SPRING_PROFILES_ACTIVE: prod
+  DATABASE_NAME: UsersDemo
 
 imagePullSecrets: []
 nameOverride: ""
@@ -60,6 +65,8 @@ ingress:
 mysql:
   auth:
     rootPassword: passwords3cr3t
+    database: UsersDemo
+
 
 resources: {}
   # We usually recommend not to specify default resources and to leave this as a conscious
