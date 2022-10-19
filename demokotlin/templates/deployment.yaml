@@ -41,19 +41,19 @@ spec:
 
           envFrom:
             - secretRef:
-                name: mysite-demokotlin
+                name: {{ include "demokotlin.fullname" . }}-{{ .Release.Revision }}
           ports:
             - name: http
               containerPort: {{ .Values.image.containerPort }}
               protocol: TCP
-          livenessProbe:
-            httpGet:
-              path: /
-              port: http
-          readinessProbe:
-            httpGet:
-              path: /
-              port: http
+#          livenessProbe:
+#            httpGet:
+#              path: /
+#              port: http
+#          readinessProbe:
+#            httpGet:x`x
+#              path: /
+#              port: http
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
       {{- with .Values.nodeSelector }}
